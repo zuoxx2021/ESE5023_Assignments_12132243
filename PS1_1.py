@@ -1,8 +1,8 @@
 # Flowchart
 import random
 
-def Print_values(a, b, c):
 
+def Print_values(a, b, c):
     if a > b:
         if b > c:
             print(a, b, c)
@@ -11,19 +11,15 @@ def Print_values(a, b, c):
         else:
             print(c, a, b)
     elif b > c:
-<<<<<<< HEAD
         pass
-=======
-        print(c, a, b)
->>>>>>> main
     else:
         print(c, b, a)
 
 
-a = random.randint(0,100)
-b = random.randint(0,100)
-c = random.randint(0,100)
-print("a: ",a)
-print("b: ",b)
-print("c: ",c)
-Print_values(a,b,c)
+a = random.randint(0, 100)
+b = random.randint(0, 100)
+c = random.randint(0, 100)
+print("a: ", a)
+print("b: ", b)
+print("c: ", c)
+Print_values(a, b, c)
