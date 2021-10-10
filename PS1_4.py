@@ -2,7 +2,7 @@ import random
 
 
 def Least_moves(x):
-    i = 1
+    i = 1             #i表示操作的次数
     while x != 2:
         if x % 2 != 0:
             x -= 1

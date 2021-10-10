@@ -1,6 +1,7 @@
-import numpy as np
+import matplotlib.pyplot as plt
 
-Total_solutions = np.zeros((101, 2))
+Total_solutions = []
+num = range(1,101)
 
 
 def Find_expression(a):
@@ -20,12 +21,23 @@ def Find_expression(a):
                                         -4] + s6 + num[-3] + s7 + num[-2] + s8 + num[-1]
                                     if eval(re) == a:
                                         i += 1
-                                        # print(re, ' = ', eval(re))
-    Total_solutions[a][0] = int(a)
-    Total_solutions[a][1] = int(i)
+    Total_solutions.append(i)
 
 
 for j in range(1, 101):
     Find_expression(j)
 
-print(Total_solutions)
+# plot--------------------------------------------------------------------
+# Plot a line
+plt.plot(num, Total_solutions)
+
+# Add x and y labels
+plt.xlabel("number")
+plt.ylabel("Total_solutions")
+
+# find the max and min-----------------------------------------------------
+for i in range(100):
+    if Total_solutions[i] == max(Total_solutions):
+        print('max:',i+1,' Total_solutions:',max(Total_solutions))
+    elif Total_solutions[i] == min(Total_solutions):
+        print('min:',i+1,' Total_solutions:',min(Total_solutions))
