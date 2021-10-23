@@ -9,19 +9,18 @@ import pandas as pd
 
 df = pd.read_csv("Sig_Eqs.tsv",sep='\t')
 
-'''c='CHINA'
-maxmag = df[df["Country"] == c]["Mag"].max()
-print(maxmag)
-df[(df["Mag"] == maxmag) & (df["Country"] == c)][["Year","Mo","Dy"]]'''
+countrylist = df['Country'].unique()
+result = df[['Country','Mag','Year','Mo','Dy']].head(0)
 
-def Count_LargestEq(c):
+def CountEq_LargestEq(a):
+    df1 = df[df['Country'] == str(a)]
+    df2 = df1[df1['Mag']==df1['Mag'].max()][['Country','Mag','Year','Mo','Dy']] 
+    df2['total_number'] = df[df['Country'] == str(a)]['Country'].count()
+    global result
+    result = result.append(df2)
     
-    num = df[df["Country"] == c]["Country"].value_counts()
+
+for i in countrylist:
+    CountEq_LargestEq(i)
     
-    maxmag = df[df["Country"] == c]["Mag"].max()
-    dat = df[df["Mag"] == maxmag & df["Country"] == c][["Mag","Year","Mo","Dy","Hr","Mn","Sec"]]
-    
-    print(num)
-    print(dat)
-    
-Count_LargestEq('CHINA')
+result = result.sort_values('total_number',ascending=False,ignore_index=True)
