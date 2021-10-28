@@ -24,3 +24,4 @@ for i in countrylist:
     CountEq_LargestEq(i)
     
 result = result.sort_values('total_number',ascending=False,ignore_index=True)
+print(result)
